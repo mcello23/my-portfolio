@@ -418,8 +418,7 @@ a[aria-label='discord-link']:hover {
     left: 0; /* Start at screen edge */
     top: 70px; /* Directly below navbar (min-height at tablet/mobile) */
     width: 100%; /* Full screen width */
-    background: #00bfa5 !important; /* Same teal as navbar - force solid color */
-    background-color: #00bfa5 !important; /* Ensure no transparency */
+    background: #00bfa5 !important; /* Same teal as navbar - force solid color */ /* Ensure no transparency */
     border-radius: 0; /* No border radius for full-width */
     padding: 20px; /* More padding for breathing room */
     box-shadow: 0 4px 12px rgb(0 0 0 / 15%); /* Softer shadow */
@@ -679,8 +678,7 @@ a[aria-label='discord-link']:hover {
     left: 0;
     top: 50px; /* Match mobile navbar min-height */
     width: 100%;
-    background: #00bfa5 !important; /* Force solid color */
-    background-color: #00bfa5 !important; /* Ensure no transparency */
+    background: #00bfa5 !important; /* Force solid color */ /* Ensure no transparency */
     padding: 16px; /* More padding */
     box-shadow: 0 4px 12px rgb(0 0 0 / 15%); /* Softer shadow */
     gap: 8px; /* Gap between items */
