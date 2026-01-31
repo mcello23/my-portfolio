@@ -24,7 +24,7 @@ module.exports = {
       },
     ],
   },
-  transformIgnorePatterns: ['/node_modules/(?!(jsdom|parse5|cheerio)/).+\\.js$'],
+  transformIgnorePatterns: ['/node_modules/(?!(jsdom|parse5|cheerio|@exodus)/).+\\.js$'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
