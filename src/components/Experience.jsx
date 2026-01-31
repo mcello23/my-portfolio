@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const Experience = () => {
   return (
     <>
@@ -144,4 +146,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default memo(Experience);

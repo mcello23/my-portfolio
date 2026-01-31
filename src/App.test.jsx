@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
@@ -106,26 +106,32 @@ describe('App Component', () => {
     expect(screen.getByTestId('cookie-consent')).toBeInTheDocument();
   });
 
-  test('renders side-projects route', () => {
+  test('renders side-projects route', async () => {
     render(
       <MemoryRouter initialEntries={['/side-projects']}>
         <App />
       </MemoryRouter>
     );
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
-    expect(screen.getByTestId('side-projects')).toBeInTheDocument();
+    // Wait for lazy loaded component
+    await waitFor(() => {
+      expect(screen.getByTestId('side-projects')).toBeInTheDocument();
+    });
     expect(screen.queryByTestId('hero')).not.toBeInTheDocument();
     expect(screen.getByTestId('footer')).toBeInTheDocument();
   });
 
-  test('renders frameworks route', () => {
+  test('renders frameworks route', async () => {
     render(
       <MemoryRouter initialEntries={['/frameworks']}>
         <App />
       </MemoryRouter>
     );
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
-    expect(screen.getByTestId('frameworks')).toBeInTheDocument();
+    // Wait for lazy loaded component
+    await waitFor(() => {
+      expect(screen.getByTestId('frameworks')).toBeInTheDocument();
+    });
     expect(screen.queryByTestId('hero')).not.toBeInTheDocument();
     expect(screen.getByTestId('footer')).toBeInTheDocument();
   });

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const Skills = () => {
   return (
     <div className="container">
@@ -673,4 +675,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default memo(Skills);

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const Footer = () => {
   return (
     <div
@@ -57,4 +59,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

@@ -1,23 +1,31 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Articles from './components/Articles';
-import CertificatesModal from './components/CertificatesModal';
 import Contact from './components/Contact';
 import CookieConsent from './components/CookieConsent';
 import ErrorBoundary from './components/ErrorBoundary';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
-import Frameworks from './components/Frameworks';
 import Hero from './components/Hero';
+import Loading from './components/Loading';
 import Navbar from './components/Navbar';
-import SideProjects from './components/SideProjects';
 import Skills from './components/Skills';
-import TestDashboardModal from './components/TestDashboardModal';
+
+// Lazy load route-level components and modals for better performance
+const Frameworks = lazy(() => import('./components/Frameworks'));
+const SideProjects = lazy(() => import('./components/SideProjects'));
+const CertificatesModal = lazy(() => import('./components/CertificatesModal'));
+const TestDashboardModal = lazy(() => import('./components/TestDashboardModal'));
 
 function App() {
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [isTestDashboardOpen, setIsTestDashboardOpen] = useState(false);
   const location = useLocation();
+
+  // Memoize callbacks to prevent unnecessary re-renders
+  const handleOpenCertificates = useCallback(() => setIsCertModalOpen(true), []);
+  const handleCloseCertificates = useCallback(() => setIsCertModalOpen(false), []);
+  const handleCloseTestDashboard = useCallback(() => setIsTestDashboardOpen(false), []);
 
   useEffect(() => {
     // Initialize Materialize components if needed
@@ -98,26 +106,28 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar onOpenCertificates={() => setIsCertModalOpen(true)} />
+      <Navbar onOpenCertificates={handleOpenCertificates} />
 
       <main>
         <ErrorBoundary>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Hero />
-                  <Skills />
-                  <Experience />
-                  <Articles />
-                  <Contact />
-                </>
-              }
-            />
-            <Route path="/side-projects" element={<SideProjects />} />
-            <Route path="/frameworks" element={<Frameworks />} />
-          </Routes>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Hero />
+                    <Skills />
+                    <Experience />
+                    <Articles />
+                    <Contact />
+                  </>
+                }
+              />
+              <Route path="/side-projects" element={<SideProjects />} />
+              <Route path="/frameworks" element={<Frameworks />} />
+            </Routes>
+          </Suspense>
         </ErrorBoundary>
       </main>
 
@@ -125,12 +135,13 @@ function App() {
 
       <CookieConsent />
 
-      <CertificatesModal isOpen={isCertModalOpen} onClose={() => setIsCertModalOpen(false)} />
+      <Suspense fallback={null}>
+        <CertificatesModal isOpen={isCertModalOpen} onClose={handleCloseCertificates} />
+      </Suspense>
 
-      <TestDashboardModal
-        isOpen={isTestDashboardOpen}
-        onClose={() => setIsTestDashboardOpen(false)}
-      />
+      <Suspense fallback={null}>
+        <TestDashboardModal isOpen={isTestDashboardOpen} onClose={handleCloseTestDashboard} />
+      </Suspense>
 
       {/* Floating Action Button for Test Dashboard */}
       <button
