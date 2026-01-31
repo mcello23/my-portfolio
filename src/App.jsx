@@ -4,6 +4,7 @@ import Articles from './components/Articles';
 import CertificatesModal from './components/CertificatesModal';
 import Contact from './components/Contact';
 import CookieConsent from './components/CookieConsent';
+import ErrorBoundary from './components/ErrorBoundary';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Frameworks from './components/Frameworks';
@@ -100,22 +101,24 @@ function App() {
       <Navbar onOpenCertificates={() => setIsCertModalOpen(true)} />
 
       <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Skills />
-                <Experience />
-                <Articles />
-                <Contact />
-              </>
-            }
-          />
-          <Route path="/side-projects" element={<SideProjects />} />
-          <Route path="/frameworks" element={<Frameworks />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <Skills />
+                  <Experience />
+                  <Articles />
+                  <Contact />
+                </>
+              }
+            />
+            <Route path="/side-projects" element={<SideProjects />} />
+            <Route path="/frameworks" element={<Frameworks />} />
+          </Routes>
+        </ErrorBoundary>
       </main>
 
       <Footer />

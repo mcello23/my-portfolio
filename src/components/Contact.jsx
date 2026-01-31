@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getEnv } from '../utils/env';
 
 const Contact = () => {
   const [formLoadTime, setFormLoadTime] = useState(0);
@@ -7,6 +8,11 @@ const Contact = () => {
 
   useEffect(() => {
     setFormLoadTime(Date.now());
+
+    // Validate Web3Forms key is configured
+    if (!getEnv('VITE_WEB3FORMS_KEY')) {
+      console.error('CRITICAL: VITE_WEB3FORMS_KEY not configured. Contact form will not work.');
+    }
   }, []);
 
   const handleSubmit = async (e) => {
@@ -101,7 +107,7 @@ const Contact = () => {
                     <input
                       type="hidden"
                       name="access_key"
-                      value="9b0257eb-d6be-4449-9eeb-af664f2bec38"
+                      value={getEnv('VITE_WEB3FORMS_KEY') || ''}
                     />
                     <input type="hidden" name="subject" value="Message from Portfolio" />
                     <input type="hidden" name="from_name" value="Portfolio Contact Form" />

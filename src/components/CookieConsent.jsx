@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { isDev } from '../utils/env';
 
 const COOKIE_NAME = 'cookie_consent';
 const COOKIE_EXPIRY_DAYS = 365;
@@ -64,7 +65,7 @@ const CookieConsent = () => {
     gtag('config', GA_MEASUREMENT_ID, {
       anonymize_ip: true,
       cookie_flags: 'SameSite=Lax;Secure',
-      debug_mode: true,
+      debug_mode: isDev(),
     });
   };
 

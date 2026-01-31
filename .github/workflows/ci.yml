@@ -220,6 +220,10 @@ jobs:
 
       - name: Build
         run: yarn build
+        env:
+          VITE_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          VITE_GIST_USERNAME: mcello23
+          VITE_GIST_ID: ${{ secrets.GIST_ID }}
 
       - name: Deploy to Cloudflare Pages
         run: yarn wrangler pages deploy dist --project-name marcelocosta --branch main --commit-dirty=true

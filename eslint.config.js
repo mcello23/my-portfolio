@@ -37,7 +37,7 @@ module.exports = [
     // Configuration for JavaScript files
     files: ['**/*.js'],
     languageOptions: {
-      ecmaVersion: 12,
+      ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
         // Browser globals
@@ -92,7 +92,7 @@ module.exports = [
     // Configuration for JSX/React files
     files: ['**/*.jsx'],
     languageOptions: {
-      ecmaVersion: 12,
+      ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: {

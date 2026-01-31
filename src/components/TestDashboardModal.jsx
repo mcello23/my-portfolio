@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './TestDashboardModal.css';
+import { getEnv } from '../utils/env';
 
 const TestDashboardModal = ({ isOpen, onClose }) => {
   const [jestData, setJestData] = useState(null);
@@ -10,9 +11,15 @@ const TestDashboardModal = ({ isOpen, onClose }) => {
   const [expandedSuites, setExpandedSuites] = useState(false);
   const [expandedK6Details, setExpandedK6Details] = useState(false);
 
-  const gistUsername = 'mcello23';
-  const gistId = '357c72c8e92ae6cf7eaef887e076fc42';
+  const gistUsername = getEnv('VITE_GIST_USERNAME') || 'mcello23';
+  const gistId = getEnv('VITE_GIST_ID') || '357c72c8e92ae6cf7eaef887e076fc42';
   const gistFilename = 'k6-results.json';
+
+  useEffect(() => {
+    if (!getEnv('VITE_GIST_USERNAME') || !getEnv('VITE_GIST_ID')) {
+      console.warn('Gist credentials not configured via env vars. Using hardcoded fallbacks.');
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
