@@ -17,7 +17,7 @@
     "test:puppeteer": "./tests/puppeteer/run-tests.sh",
     "test:reports": "yarn test --json --outputFile=tests/jest/reports/results-latest.json && cd tests/k6 && ./run-tests.sh && cd ../..",
     "generate-test-data": "node scripts/generate-test-data.js",
-    "build:cloudflare": "mkdir -p tests/jest/reports tests/k6/reports && yarn test --silent --json --outputFile=tests/jest/reports/results-latest.json || echo '{\"success\":false}' > tests/jest/reports/results-latest.json && yarn generate-test-data && node scripts/prepare-cloudflare-build.js",
+    "build:cloudflare": "vite build && node scripts/generate-csp-headers.js && mkdir -p tests/jest/reports tests/k6/reports && yarn test --silent --json --outputFile=tests/jest/reports/results-latest.json || echo '{\"success\":false}' > tests/jest/reports/results-latest.json && yarn generate-test-data && mv test-data.js dist/",
     "lint": "eslint . --ext .js,.html",
     "lint:fix": "eslint . --ext .js,.html --fix",
     "lint:css": "stylelint '**/*.css'",
