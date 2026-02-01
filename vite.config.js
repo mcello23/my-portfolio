@@ -1,9 +1,10 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { cspHashPlugin } from './vite-plugin-csp-hash.js';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cspHashPlugin()],
   server: {
     port: 3000,
   },

@@ -48,25 +48,37 @@ const CookieConsent = () => {
     if (!shouldEnableAnalytics()) return;
     if (window.gtag) return; // Already initialized
 
-    // Load gtag.js script
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    document.head.appendChild(script);
+    // Load gtag initialization script first (CSP compliant - external file)
+    const initScript = document.createElement('script');
+    initScript.src = '/js/gtag-init.js';
+    document.head.appendChild(initScript);
 
-    // Initialize dataLayer and gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    window.gtag = gtag;
+    initScript.onload = () => {
+      // Then load Google Analytics
+      const gtagScript = document.createElement('script');
+      gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
 
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, {
-      anonymize_ip: true,
-      cookie_flags: 'SameSite=Lax;Secure',
-      debug_mode: isDev(),
-    });
+      // Configure after both scripts load
+      gtagScript.onload = () => {
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID, {
+          anonymize_ip: true,
+          cookie_flags: 'SameSite=Lax;Secure',
+          debug_mode: isDev(),
+        });
+      };
+
+      // Handle script loading errors
+      gtagScript.onerror = () => {
+        console.error('Failed to load Google Analytics script');
+      };
+    };
+
+    initScript.onerror = () => {
+      console.error('Failed to load gtag initialization script');
+    };
   };
 
   const handleAccept = () => {

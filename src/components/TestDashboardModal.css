@@ -516,4 +516,30 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  /* Single column for stats on mobile to prevent cutoff */
+  .test-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .stat-item {
+    padding: 12px;
+  }
+
+  /* Reduce font sizes on mobile */
+  .stat-value {
+    font-size: 1.25rem;
+    overflow-wrap: break-word;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  /* Ensure test section content fits */
+  .test-section-content {
+    padding: 15px;
+  }
 }
