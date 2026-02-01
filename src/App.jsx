@@ -80,7 +80,7 @@ function App() {
         el.style.willChange = 'opacity';
         el.dataset.revealInit = '1';
       }
-      hide(el);
+      // hide(el);
     });
 
     const observer = new window.IntersectionObserver(
