@@ -27,6 +27,7 @@ module.exports = {
   transformIgnorePatterns: ['/node_modules/(?!(jsdom|parse5|cheerio|@exodus)/).+\\.js$'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '^.*/utils/env(\\.js)?$': '<rootDir>/tests/jest/__mocks__/env.js',
   },
   testMatch: ['**/tests/jest/**/*.test.{js,jsx}', '**/src/**/*.test.{js,jsx}'],
   testPathIgnorePatterns: [
