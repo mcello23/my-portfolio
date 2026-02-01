@@ -157,4 +157,48 @@ describe('CertificatesModal Component', () => {
     expect(screen.getByText('React Certification')).toBeInTheDocument();
     expect(screen.getByText('Node.js Certification')).toBeInTheDocument();
   });
+
+  test('ignores keyboard events when modal is closed', () => {
+    const handleClose = jest.fn();
+    render(<CertificatesModal isOpen={false} onClose={handleClose} />);
+
+    // Try to trigger keyboard events when modal is closed
+    fireEvent.keyDown(document, { key: 'Escape' });
+    fireEvent.keyDown(document, { key: 'ArrowRight' });
+
+    // onClose should not be called because modal handles early return
+    expect(handleClose).not.toHaveBeenCalled();
+  });
+
+  test('does not swipe navigate when touch coordinates are missing', () => {
+    render(<CertificatesModal isOpen={true} onClose={jest.fn()} />);
+
+    // Open detail view
+    fireEvent.click(screen.getByText('React Certification'));
+
+    const certTitle = screen.getByRole('heading', { name: 'React Certification', level: 3 });
+    const viewerElement = certTitle.closest('.cert-viewer');
+
+    // Start a touch but don't move (touchEnd will be null)
+    fireEvent.touchStart(viewerElement, { targetTouches: [{ clientX: 300 }] });
+    fireEvent.touchEnd(viewerElement);
+
+    // Should still be on React cert (no navigation happened)
+    expect(
+      screen.getByRole('heading', { name: 'React Certification', level: 3 })
+    ).toBeInTheDocument();
+  });
+
+  test('closes modal when clicking on backdrop', () => {
+    const handleClose = jest.fn();
+    render(<CertificatesModal isOpen={true} onClose={handleClose} />);
+
+    // Find the modal backdrop (the outer div with id="certificateModal")
+    const backdrop = document.getElementById('certificateModal');
+
+    // Click on the backdrop (simulating clicking outside the modal content)
+    fireEvent.click(backdrop, { target: { id: 'certificateModal' } });
+
+    expect(handleClose).toHaveBeenCalledTimes(1);
+  });
 });

@@ -215,5 +215,42 @@ describe('init.js - Unit Tests', () => {
       const dispatched = img.dispatchEvent(evt);
       expect(evt.defaultPrevented || dispatched === false).toBe(true);
     });
+
+    test('uses M.AutoInit when available', () => {
+      const autoInitMock = jest.fn();
+      global.window.M = {
+        AutoInit: autoInitMock,
+        Sidenav: { init: jest.fn() },
+        Parallax: { init: jest.fn() },
+      };
+
+      // Re-require to get the updated M object
+      jest.resetModules();
+      const freshInitModule = require('../../public/js/init.js');
+      freshInitModule.initMaterialize();
+
+      expect(autoInitMock).toHaveBeenCalled();
+    });
+
+    test('falls back to jQuery when M is not present', () => {
+      delete global.window.M;
+
+      const sidenavMock = jest.fn();
+      const parallaxMock = jest.fn();
+
+      global.jQuery = jest.fn((selector) => ({
+        sidenav: selector === '.sidenav' ? sidenavMock : undefined,
+        parallax: selector === '.parallax' ? parallaxMock : undefined,
+      }));
+
+      jest.resetModules();
+      const freshInitModule = require('../../public/js/init.js');
+      freshInitModule.initMaterialize();
+
+      expect(sidenavMock).toHaveBeenCalled();
+      expect(parallaxMock).toHaveBeenCalled();
+
+      delete global.jQuery;
+    });
   });
 });

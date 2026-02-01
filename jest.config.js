@@ -42,6 +42,7 @@ module.exports = {
   collectCoverageFrom: [
     'public/js/**/*.js',
     'src/**/*.{js,jsx}',
+    '!public/js/**/*.min.js',
     '!public/js/materialize.js',
     '!public/js/prism.js',
     '!**/node_modules/**',

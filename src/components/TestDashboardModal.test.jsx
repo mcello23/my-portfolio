@@ -143,6 +143,27 @@ describe('TestDashboardModal Component', () => {
     }
   });
 
+  test('warns when Gist credentials are not configured', () => {
+    const consoleWarnSpy = jest.spyOn(console, 'warn');
+
+    // Override env to simulate missing credentials
+    const originalEnv = global.__VITE_ENV__;
+    global.__VITE_ENV__ = {
+      ...originalEnv,
+      VITE_GIST_USERNAME: undefined,
+      VITE_GIST_ID: undefined,
+    };
+
+    render(<TestDashboardModal isOpen={false} onClose={() => {}} />);
+
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      'Gist credentials not configured via env vars. Using hardcoded fallbacks.'
+    );
+
+    // Restore
+    global.__VITE_ENV__ = originalEnv;
+  });
+
   test('expands and collapses test suites', async () => {
     // Ensure window.TEST_RESULTS is present (it should be from beforeEach, but let's be explicit)
     window.TEST_RESULTS = mockTestResults;
