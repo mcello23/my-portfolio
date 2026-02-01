@@ -166,4 +166,25 @@ describe('Contact Component', () => {
 
     global.Date.now = realDateNow;
   });
+
+  test('logs error when Web3Forms key is not configured', () => {
+    // Mock getEnv to return undefined
+    const consoleErrorSpy = jest.spyOn(console, 'error');
+
+    // Temporarily override the global mock
+    const originalEnv = global.__VITE_ENV__;
+    global.__VITE_ENV__ = {
+      ...originalEnv,
+      VITE_WEB3FORMS_KEY: undefined,
+    };
+
+    render(<Contact />);
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'CRITICAL: VITE_WEB3FORMS_KEY not configured. Contact form will not work.'
+    );
+
+    // Restore
+    global.__VITE_ENV__ = originalEnv;
+  });
 });

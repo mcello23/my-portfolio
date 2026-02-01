@@ -74,4 +74,35 @@ describe('CookieConsent Component', () => {
     // In test environment, banner should show (unless cookie is set)
     expect(screen.getByRole('dialog', { name: /Cookie consent banner/i })).toBeInTheDocument();
   });
+
+  test('tracks consent acceptance event with gtag', () => {
+    window.gtag = jest.fn();
+
+    render(<CookieConsent />);
+    const acceptBtn = screen.getByRole('button', { name: /Accept all cookies/i });
+    fireEvent.click(acceptBtn);
+
+    // Should call gtag event for cookie consent
+    expect(window.gtag).toHaveBeenCalledWith('event', 'cookie_consent', {
+      event_category: 'Consent',
+      event_label: 'Accepted',
+    });
+
+    delete window.gtag;
+  });
+
+  test('does not reinitialize analytics if gtag already exists', () => {
+    window.gtag = jest.fn();
+    const appendChildSpy = jest.spyOn(document.head, 'appendChild');
+
+    render(<CookieConsent />);
+    const acceptBtn = screen.getByRole('button', { name: /Accept all cookies/i });
+    fireEvent.click(acceptBtn);
+
+    // Should not append any scripts since gtag already exists
+    expect(appendChildSpy).not.toHaveBeenCalled();
+
+    appendChildSpy.mockRestore();
+    delete window.gtag;
+  });
 });
