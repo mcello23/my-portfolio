@@ -275,7 +275,11 @@ jobs:
       
       - name: Build project
         run: yarn build
-      
+        env:
+          VITE_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          VITE_GIST_USERNAME: mcello23
+          VITE_GIST_ID: ${{ secrets.GIST_ID }}
+
       - name: Run Lighthouse CI
         run: |
           npm install -g @lhci/cli
