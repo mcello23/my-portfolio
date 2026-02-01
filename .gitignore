@@ -434,4 +434,5 @@ coverage/
 # Build directory for Cloudflare Pages deployment
 dist/
 
-.gemini/
+.gemini
+.claude
