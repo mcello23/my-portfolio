@@ -28,6 +28,18 @@ function App() {
   const handleCloseTestDashboard = useCallback(() => setIsTestDashboardOpen(false), []);
 
   useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        // Clear the state to prevent scrolling on subsequent renders if needed,
+        // though strictly not necessary for simple navigation.
+        window.history.replaceState({}, document.title);
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
     // Initialize Materialize components if needed
     if (window.M) {
       window.M.AutoInit();
@@ -80,7 +92,7 @@ function App() {
         el.style.willChange = 'opacity';
         el.dataset.revealInit = '1';
       }
-      // hide(el);
+      hide(el);
     });
 
     const observer = new window.IntersectionObserver(

@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import CertificatesModal from './CertificatesModal';
 import Footer from './Footer';
 
@@ -56,7 +57,11 @@ describe('Security and Performance Checks', () => {
 
   describe('Footer', () => {
     test('external links have rel="noopener noreferrer"', () => {
-      render(<Footer />);
+      render(
+        <MemoryRouter>
+          <Footer />
+        </MemoryRouter>
+      );
 
       const links = screen.getAllByRole('link');
       const externalLinks = links.filter((link) => link.getAttribute('target') === '_blank');
