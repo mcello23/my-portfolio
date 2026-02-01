@@ -1,5 +1,0 @@
-# Cloudflare Pages - Deploy ONLY the dist/ directory
-# Everything else is excluded
-
-*
-!dist/
