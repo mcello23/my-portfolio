@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { certificates } from '../data/certificates';
 import '../styles/certificates.min.css';
+import useFocusTrap from './hooks/useFocusTrap';
 
 const CertificatesModal = ({ isOpen, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(null);
+  const modalRef = useRef(null);
+  useFocusTrap(modalRef, isOpen);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
@@ -116,7 +119,7 @@ const CertificatesModal = ({ isOpen, onClose }) => {
         if (e.target.id === 'certificateModal') onClose();
       }}
     >
-      <div className="cert-modal-content modern-theme">
+      <div className="cert-modal-content modern-theme" ref={modalRef}>
         <button className="cert-close" aria-label="Close modal" onClick={onClose}>
           &times;
         </button>
