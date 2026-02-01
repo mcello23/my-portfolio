@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import './TestDashboardModal.css';
+import { useEffect, useRef, useState } from 'react';
 import { getEnv } from '../utils/env';
+import useFocusTrap from './hooks/useFocusTrap';
+import './TestDashboardModal.css';
 
 const TestDashboardModal = ({ isOpen, onClose }) => {
   const [jestData, setJestData] = useState(null);
@@ -10,6 +11,8 @@ const TestDashboardModal = ({ isOpen, onClose }) => {
   const [error, setError] = useState(null);
   const [expandedSuites, setExpandedSuites] = useState(false);
   const [expandedK6Details, setExpandedK6Details] = useState(false);
+  const modalRef = useRef(null);
+  useFocusTrap(modalRef, isOpen);
 
   const gistUsername = getEnv('VITE_GIST_USERNAME') || 'mcello23';
   const gistId = getEnv('VITE_GIST_ID') || '357c72c8e92ae6cf7eaef887e076fc42';
@@ -400,7 +403,11 @@ const TestDashboardModal = ({ isOpen, onClose }) => {
       aria-modal="true"
       aria-labelledby="dashboard-title"
     >
-      <div className="test-dashboard-modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="test-dashboard-modal-content"
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className="test-dashboard-modal-close"
           onClick={onClose}

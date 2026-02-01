@@ -41,7 +41,7 @@ describe('Frameworks Component', () => {
     });
 
     test('renders capabilities', () => {
-      expect(screen.getByText(/Auth:/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/Auth:/i)[0]).toBeInTheDocument();
       expect(screen.getAllByText(/Real-time:/i)[0]).toBeInTheDocument();
       expect(screen.getByText(/Multi-persona:/i)).toBeInTheDocument();
       expect(screen.getByText(/i18n:/i)).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe('Frameworks Component', () => {
     });
 
     test('renders capabilities', () => {
-      expect(screen.getByText(/Documents:/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/Documents:/i)[0]).toBeInTheDocument();
       expect(screen.getByText(/User Mgmt:/i)).toBeInTheDocument();
       expect(screen.getByText(/Regulatory:/i)).toBeInTheDocument();
       expect(screen.getByText(/Comms:/i)).toBeInTheDocument();
@@ -115,7 +115,7 @@ describe('Frameworks Component', () => {
     });
 
     test('renders capabilities', () => {
-      expect(screen.getByText(/Dynamic UI:/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/Dynamic UI:/i)[0]).toBeInTheDocument();
       expect(screen.getByText(/SDK Testing:/i)).toBeInTheDocument();
       expect(screen.getByText(/Cross-platform:/i)).toBeInTheDocument();
       expect(screen.getByText(/Integrations:/i)).toBeInTheDocument();

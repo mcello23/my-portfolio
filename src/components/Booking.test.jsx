@@ -28,7 +28,11 @@ describe('Booking Functionality', () => {
 
   describe('Footer Booking Button', () => {
     test('renders booking button with correct attributes', () => {
-      render(<Footer />);
+      render(
+        <MemoryRouter>
+          <Footer />
+        </MemoryRouter>
+      );
 
       const bookingLink = screen.getByRole('link', { name: /book 15-min call/i });
 

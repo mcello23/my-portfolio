@@ -1,6 +1,22 @@
 import { memo } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'contact' } });
+    } else {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div
       className="section"
@@ -40,6 +56,7 @@ const Footer = () => {
               </a>
               <a
                 href="#contact"
+                onClick={handleContactClick}
                 className="btn-large white teal-text waves-effect"
                 style={{ margin: '10px', borderRadius: '25px' }}
               >
