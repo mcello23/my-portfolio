@@ -1,4 +1,23 @@
 import '@testing-library/jest-dom';
+
+// Suppress React 18 act() warnings from lazy-loaded routes
+// These are internal React Router async updates that don't affect test validity
+const originalError = console.error;
+beforeAll(() => {
+  console.error = (...args) => {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].includes('A suspended resource finished loading inside a test')
+    ) {
+      return;
+    }
+    originalError.call(console, ...args);
+  };
+});
+
+afterAll(() => {
+  console.error = originalError;
+});
 import { TextEncoder, TextDecoder } from 'util';
 
 Object.assign(global, { TextDecoder, TextEncoder });

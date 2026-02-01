@@ -51,9 +51,11 @@ describe('Static Assets & Configuration', () => {
       expect(html).not.toMatch(/<meta[^>]*http-equiv="Content-Security-Policy"[^>]*>/);
     });
 
-    test('loads non-critical CSS in a non-blocking way', () => {
+    test('loads Font Awesome CSS (async loading removed for CSP compliance)', () => {
+      // Note: Previously used media="print" onload="this.media='all'" trick
+      // Removed for CSP compliance (no inline event handlers)
       expect(html).toMatch(
-        /<link[^>]*rel="stylesheet"[^>]*media="print"[^>]*onload="this\.media\s*=\s*'all'"[^>]*>/
+        /<link[^>]*rel="stylesheet"[^>]*href="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome/
       );
     });
   });
