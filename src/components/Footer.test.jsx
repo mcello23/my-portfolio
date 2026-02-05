@@ -13,7 +13,7 @@ describe('Footer Component', () => {
     expect(
       screen.getByText(/Ready to build robust, scalable testing solutions together/i)
     ).toBeInTheDocument();
-    expect(screen.getByText(/© 2025 Marcelo Costa/i)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026 Marcelo Costa/i)).toBeInTheDocument();
   });
 
   test('renders social links with correct hrefs', () => {

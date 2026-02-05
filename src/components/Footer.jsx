@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ const Footer = () => {
               </a>
             </div>
             <p className="white-text" style={{ marginTop: '20px' }}>
-              © 2025 Marcelo Costa | Senior QA Engineer & Test Automation Specialist
+              © 2026 Marcelo Costa | Senior QA Engineer & Test Automation Specialist
             </p>
           </div>
         </div>
