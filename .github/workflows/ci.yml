@@ -233,7 +233,7 @@ jobs:
           VITE_GIST_ID: ${{ secrets.GIST_ID }}
 
       - name: Deploy to Cloudflare Pages
-        run: yarn wrangler pages deploy dist --project-name marcelocosta --branch main --commit-dirty=true
+        run: yarn wrangler pages deploy dist --project-name marcelocosta
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
