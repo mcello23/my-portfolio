@@ -22,11 +22,11 @@ const Frameworks = () => {
         <div className="container">
           <div className="row center">
             <h3 className="header col s12 dark" style={{ marginBottom: '40px' }}>
-              Enterprise Testing Frameworks & Automation
+              Testing Frameworks & Open-Source Examples
             </h3>
             <p className="flow-text grey-text text-darken-3">
-              Comprehensive testing solutions with advanced CI/CD integration, automated reporting,
-              and enterprise-grade validation
+              Real-world automation repos covering E2E, API, and performance testing — each with
+              CI/CD pipelines and automated reporting
             </p>
           </div>
         </div>

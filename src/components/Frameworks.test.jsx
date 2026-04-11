@@ -21,161 +21,206 @@ describe('Frameworks Component', () => {
   });
 
   test('renders main title and description', () => {
-    expect(screen.getByText(/Enterprise Testing Frameworks & Automation/i)).toBeInTheDocument();
+    expect(screen.getByText(/Testing Frameworks & Open-Source Examples/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/Comprehensive testing solutions with advanced CI\/CD integration/i)
+      screen.getByText(/Real-world automation repos covering E2E, API, and performance testing/i)
     ).toBeInTheDocument();
   });
 
   describe('Playwright Section', () => {
-    test('renders section title', () => {
-      expect(screen.getByText(/Advanced Playwright Testing/i)).toBeInTheDocument();
+    test('renders hero title and subtitle', () => {
+      expect(screen.getByText(/Playwright Testing/i)).toBeInTheDocument();
       expect(
-        screen.getByText(/Cross-browser • Visual Regression • API Validation/i)
+        screen.getByText(/TypeScript • Chromium • Firefox • Multi-Browser/i)
       ).toBeInTheDocument();
     });
 
-    test('renders Identity Verification Platform card', () => {
-      expect(screen.getByText(/Identity Verification Platform/i)).toBeInTheDocument();
-      expect(screen.getByText(/Enterprise-Grade E2E Testing with TypeScript/i)).toBeInTheDocument();
+    test('renders card title and subtitle', () => {
+      expect(screen.getByText(/E2E Automation with Playwright/i)).toBeInTheDocument();
+      expect(screen.getByText(/TypeScript-first, cross-browser test suite/i)).toBeInTheDocument();
     });
 
-    test('renders capabilities', () => {
-      expect(screen.getAllByText(/Auth:/i)[0]).toBeInTheDocument();
-      expect(screen.getAllByText(/Real-time:/i)[0]).toBeInTheDocument();
-      expect(screen.getByText(/Multi-persona:/i)).toBeInTheDocument();
-      expect(screen.getByText(/i18n:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Responsive:/i)).toBeInTheDocument();
+    test('renders key capabilities', () => {
+      expect(screen.getAllByText(/Stack:/i)[0]).toBeInTheDocument();
+      expect(screen.getAllByText(/Browsers:/i)[0]).toBeInTheDocument();
+      expect(screen.getAllByText(/Login:/i)[0]).toBeInTheDocument();
+      expect(screen.getAllByText(/Checkout:/i)[0]).toBeInTheDocument();
+      expect(screen.getAllByText(/CI\/CD:/i)[0]).toBeInTheDocument();
     });
 
-    test('renders Test Data Factory Pattern section', () => {
-      expect(screen.getByText(/Test Data Factory Pattern/i)).toBeInTheDocument();
-      expect(screen.getByText(/Dynamic Generation/i)).toBeInTheDocument();
-      expect(screen.getByText(/API-First Testing/i)).toBeInTheDocument();
-      expect(screen.getAllByText(/UI Validation/i)[0]).toBeInTheDocument();
+    test('renders stat badges', () => {
+      expect(screen.getByText(/^29 tests$/i)).toBeInTheDocument();
+      expect(screen.getByText(/^2 browsers$/i)).toBeInTheDocument();
+      expect(screen.getByText(/^58 CI runs$/i)).toBeInTheDocument();
     });
 
-    test('renders Explore Repository link', () => {
-      const link = screen.getByRole('link', { name: /Explore Repository/i });
+    test('renders Multi-Browser Execution Strategy section', () => {
+      expect(screen.getByText(/Multi-Browser Execution Strategy/i)).toBeInTheDocument();
+      expect(screen.getByText(/True Parallelism/i)).toBeInTheDocument();
+      expect(screen.getByText(/Automatic Trace Capture/i)).toBeInTheDocument();
+      expect(screen.getByText(/Centralised Fixtures/i)).toBeInTheDocument();
+    });
+
+    test('renders View on GitHub CTA link', () => {
+      const link = screen.getByRole('link', { name: /View on GitHub/i });
       expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', 'https://github.com/mcello23/playwright-demonstration');
+      expect(link).toHaveAttribute('href', 'https://github.com/mcello23/playwright-example');
     });
   });
 
   describe('Cypress Section', () => {
-    test('renders section title', () => {
-      expect(screen.getByText(/Enterprise Cypress Testing/i)).toBeInTheDocument();
-      expect(screen.getByText(/BDD • GraphQL • Docker • CI\/CD/i)).toBeInTheDocument();
-    });
-
-    test('renders KYB Platform Automation card', () => {
-      expect(screen.getByText(/KYB Platform Automation/i)).toBeInTheDocument();
+    test('renders hero title and subtitle', () => {
+      expect(screen.getByText(/Cypress Testing/i)).toBeInTheDocument();
       expect(
-        screen.getByText(/Behavior-Driven Development with Real-World Integration/i)
+        screen.getByText(/TypeScript • BDD\/Gherkin • Mochawesome • Allure/i)
       ).toBeInTheDocument();
     });
 
-    test('renders capabilities', () => {
-      expect(screen.getAllByText(/Documents:/i)[0]).toBeInTheDocument();
-      expect(screen.getByText(/User Mgmt:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Regulatory:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Comms:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Financial:/i)).toBeInTheDocument();
+    test('renders card title and subtitle', () => {
+      expect(screen.getByText(/E2E Automation with Cypress/i)).toBeInTheDocument();
+      expect(screen.getByText(/Two repos, two styles/i)).toBeInTheDocument();
     });
 
-    test('renders BDD Pattern section', () => {
-      expect(screen.getByText(/Behavior-Driven Development Pattern/i)).toBeInTheDocument();
-      expect(screen.getByText(/Gherkin Syntax/i)).toBeInTheDocument();
-      expect(screen.getByText(/Real-Time Tests/i)).toBeInTheDocument();
-      expect(screen.getByText(/Complex Workflows/i)).toBeInTheDocument();
-      expect(screen.getByText(/Living Docs/i)).toBeInTheDocument();
+    test('renders key capabilities', () => {
+      expect(screen.getByText(/TS Repo:/i)).toBeInTheDocument();
+      expect(screen.getByText(/BDD Repo:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Gherkin:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Scenarios:/i)).toBeInTheDocument();
     });
 
-    test('renders View Enterprise Project link', () => {
-      const link = screen.getByRole('link', { name: /View Enterprise Project/i });
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute(
+    test('renders stat badges', () => {
+      expect(screen.getByText(/^28 TS tests$/i)).toBeInTheDocument();
+      expect(screen.getByText(/^27 BDD scenarios$/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/^2 repos$/i)[0]).toBeInTheDocument();
+    });
+
+    test('renders Dual-Approach Cypress Suite section', () => {
+      expect(screen.getByText(/Dual-Approach Cypress Suite/i)).toBeInTheDocument();
+      expect(screen.getByText(/TypeScript Spec Style/i)).toBeInTheDocument();
+      expect(screen.getByText(/BDD \/ Gherkin Style/i)).toBeInTheDocument();
+      expect(screen.getByText(/Full CI\/CD on Both/i)).toBeInTheDocument();
+    });
+
+    test('renders TypeScript and BDD CTA buttons', () => {
+      const tsLink = screen.getByRole('link', { name: /View TypeScript Repo/i });
+      expect(tsLink).toBeInTheDocument();
+      expect(tsLink).toHaveAttribute(
         'href',
-        'https://github.com/mcello23/cypress-automation-real-proj'
+        'https://github.com/mcello23/cypress-typescript-example'
+      );
+
+      const bddLink = screen.getByRole('link', { name: /View BDD Repo/i });
+      expect(bddLink).toBeInTheDocument();
+      expect(bddLink).toHaveAttribute(
+        'href',
+        'https://github.com/mcello23/cypress-with-cucumber-example'
       );
     });
   });
 
-  describe('Builder Platform Section', () => {
-    test('renders section title', () => {
-      expect(screen.getByText(/Identity Platform Builder/i)).toBeInTheDocument();
-      expect(screen.getByText(/GitHub Actions • Docker • Nightly Testing/i)).toBeInTheDocument();
-    });
-
-    test('renders Enterprise Builder Platform card', () => {
-      expect(screen.getByText(/Enterprise Builder Platform/i)).toBeInTheDocument();
+  describe('Selenium Section', () => {
+    test('renders hero title and subtitle', () => {
+      expect(screen.getByText(/Selenium Testing/i)).toBeInTheDocument();
       expect(
-        screen.getByText(/Advanced CI\/CD with Automated Deployment Pipelines/i)
+        screen.getByText(/Java 17 • JUnit 5 • TestNG 7 • Page Object Model/i)
       ).toBeInTheDocument();
     });
 
-    test('renders capabilities', () => {
-      expect(screen.getAllByText(/Dynamic UI:/i)[0]).toBeInTheDocument();
-      expect(screen.getByText(/SDK Testing:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Cross-platform:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Integrations:/i)).toBeInTheDocument();
+    test('renders card title and subtitle', () => {
+      expect(screen.getByText(/E2E Automation with Selenium/i)).toBeInTheDocument();
+      expect(screen.getByText(/Classic POM pattern in Java/i)).toBeInTheDocument();
     });
 
-    test('renders CI/CD Pipeline Integration section', () => {
-      expect(screen.getByText(/CI\/CD Pipeline Integration/i)).toBeInTheDocument();
-      expect(screen.getByText(/Matrix Testing/i)).toBeInTheDocument();
-      expect(screen.getByText(/Multi-Environment/i)).toBeInTheDocument();
-      expect(screen.getByText(/Auto Triggers/i)).toBeInTheDocument();
-      expect(screen.getByText(/Matrix Builds/i)).toBeInTheDocument();
+    test('renders key capabilities', () => {
+      expect(screen.getByText(/JUnit 5:/i)).toBeInTheDocument();
+      expect(screen.getByText(/TestNG 7:/i)).toBeInTheDocument();
+      expect(screen.getByText(/POM:/i)).toBeInTheDocument();
+      expect(screen.getByText(/@DataProvider:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Headless:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Driver Mgmt:/i)).toBeInTheDocument();
     });
 
-    test('renders Explore CI/CD Pipeline link', () => {
-      const link = screen.getByRole('link', { name: /Explore CI\/CD Pipeline/i });
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute(
+    test('renders stat badges', () => {
+      expect(screen.getByText(/^12 JUnit 5 tests$/i)).toBeInTheDocument();
+      expect(screen.getByText(/^7\+ TestNG runs$/i)).toBeInTheDocument();
+    });
+
+    test('renders Page Object Model in Java section', () => {
+      expect(screen.getByText(/Page Object Model in Java/i)).toBeInTheDocument();
+      expect(screen.getByText(/Clean POM Architecture/i)).toBeInTheDocument();
+      expect(screen.getByText(/TestNG @DataProvider Matrix/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/Allure Reporting/i)[0]).toBeInTheDocument();
+    });
+
+    test('renders JUnit and TestNG CTA buttons', () => {
+      const junitLink = screen.getByRole('link', { name: /View JUnit Repo/i });
+      expect(junitLink).toBeInTheDocument();
+      expect(junitLink).toHaveAttribute(
         'href',
-        'https://github.com/mcello23/cypress-demonstration-repo'
+        'https://github.com/mcello23/selenium-java-example'
+      );
+
+      const testngLink = screen.getByRole('link', { name: /View TestNG Repo/i });
+      expect(testngLink).toBeInTheDocument();
+      expect(testngLink).toHaveAttribute(
+        'href',
+        'https://github.com/mcello23/selenium-java-testng-example'
       );
     });
   });
 
-  describe('Coming Soon Section', () => {
-    test('renders section title', () => {
-      expect(screen.getByText(/Coming Soon/i)).toBeInTheDocument();
-      expect(screen.getByText(/More Enterprise Testing Solutions/i)).toBeInTheDocument();
+  describe('API & Performance Testing Section', () => {
+    test('renders hero title', () => {
+      expect(screen.getAllByText(/API & Performance Testing/i)[0]).toBeInTheDocument();
+      expect(screen.getByText(/k6 • Supertest • Postman\/Newman/i)).toBeInTheDocument();
     });
 
-    test('renders Advanced Testing Methodologies card', () => {
-      expect(screen.getByText(/Advanced Testing Methodologies/i)).toBeInTheDocument();
-      expect(screen.getByText(/Performance, Load, Unit & AI\/LLM Testing/i)).toBeInTheDocument();
+    test('renders section card header', () => {
+      expect(screen.getByText(/API & Performance Testing Repos/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /k6 load testing, Supertest API validation, and Postman\/Newman collections/i
+        )
+      ).toBeInTheDocument();
     });
 
-    test('renders Performance Testing', () => {
-      expect(screen.getByText(/Performance Testing/i)).toBeInTheDocument();
-      expect(screen.getByText(/Lighthouse CI:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Metrics:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Resource:/i)).toBeInTheDocument();
-    });
-
-    test('renders Load Testing', () => {
-      expect(screen.getByText(/Load Testing/i)).toBeInTheDocument();
-      expect(screen.getByText(/K6:/i)).toBeInTheDocument();
+    test('renders k6 Performance Testing card', () => {
+      expect(screen.getAllByText(/Performance Testing/i)[0]).toBeInTheDocument();
+      expect(screen.getByText(/k6 · JavaScript/i)).toBeInTheDocument();
+      expect(screen.getByText(/Smoke:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Load:/i)).toBeInTheDocument();
       expect(screen.getByText(/Stress:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Spike:/i)).toBeInTheDocument();
     });
 
-    test('renders Unit Testing', () => {
-      expect(screen.getByText(/Unit Testing/i)).toBeInTheDocument();
-      expect(screen.getByText(/Jest\/Vitest:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Coverage:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Mocking:/i)).toBeInTheDocument();
+    test('renders Supertest API Testing card', () => {
+      expect(screen.getByText(/API Testing/i)).toBeInTheDocument();
+      expect(screen.getByText(/Jest \+ Supertest/i)).toBeInTheDocument();
+      expect(screen.getByText(/Validation:/i)).toBeInTheDocument();
     });
 
-    test('renders AI/LLM Testing', () => {
-      expect(screen.getAllByText(/AI\/LLM Testing/i)[0]).toBeInTheDocument();
-      expect(screen.getByText(/Non-deterministic:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Hallucination:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Boundaries:/i)).toBeInTheDocument();
+    test('renders Postman API Collections card', () => {
+      expect(screen.getByText(/API Collections/i)).toBeInTheDocument();
+      expect(screen.getByText(/Postman \/ Newman/i)).toBeInTheDocument();
+      expect(screen.getByText(/Runner:/i)).toBeInTheDocument();
+      expect(screen.getByText(/Collection:/i)).toBeInTheDocument();
+    });
+
+    test('renders k6-example-repo GitHub link', () => {
+      const link = screen.getByRole('link', { name: /k6-example-repo/i });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('href', 'https://github.com/mcello23/k6-example-repo');
+    });
+
+    test('renders supertest-example-repo GitHub link', () => {
+      const link = screen.getByRole('link', { name: /supertest-example-repo/i });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('href', 'https://github.com/mcello23/supertest-example-repo');
+    });
+
+    test('renders postman-example-repo GitHub link', () => {
+      const link = screen.getByRole('link', { name: /postman-example-repo/i });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute('href', 'https://github.com/mcello23/postman-example-repo');
     });
   });
 });
