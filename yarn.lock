@@ -74,7 +74,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.23.9, @babel/core@npm:^7.27.4, @babel/core@npm:^7.29.0":
+"@babel/core@npm:^7.23.9, @babel/core@npm:^7.27.4":
   version: 7.29.0
   resolution: "@babel/core@npm:7.29.0"
   dependencies:
@@ -7741,7 +7741,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "webpage-tests@workspace:."
   dependencies:
-    "@babel/core": "npm:^7.29.0"
     "@swc/core": "npm:^1.15.24"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.1"
