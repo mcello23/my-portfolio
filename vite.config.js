@@ -32,9 +32,16 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            // Vendor libraries (shared, long-term cached)
-            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (
+                id.includes('react') ||
+                id.includes('react-dom') ||
+                id.includes('react-router-dom')
+              ) {
+                return 'react-vendor';
+              }
+            }
           },
         },
       },

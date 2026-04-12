@@ -24,7 +24,9 @@ module.exports = {
       },
     ],
   },
-  transformIgnorePatterns: ['/node_modules/(?!(jsdom|parse5|cheerio|@exodus)/).+\\.js$'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(jsdom|parse5|cheerio|@exodus|html-encoding-sniffer|@bramus|nwsapi|whatwg-encoding|whatwg-mimetype|undici)/).+\\.js$',
+  ],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^.*/utils/env(\\.js)?$': '<rootDir>/tests/jest/__mocks__/env.js',

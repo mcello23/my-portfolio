@@ -5,7 +5,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const { JSDOM } = require('jsdom');
 
 describe('init.js - Unit Tests', () => {
   let initCode;
@@ -167,25 +166,18 @@ describe('init.js - Unit Tests', () => {
   });
 
   describe('Live initMaterialize execution', () => {
-    let dom;
     let sidenavMock;
     let parallaxMock;
     let initModule;
 
     beforeEach(() => {
       jest.resetModules();
-      dom = new JSDOM(
-        `<!doctype html><html><head></head><body><ul class="sidenav"></ul><div class="parallax"></div></body></html>`,
-        { url: 'https://example.com/', pretendToBeVisual: true }
-      );
-
-      global.window = dom.window;
-      global.document = dom.window.document;
+      document.body.innerHTML = '<ul class="sidenav"></ul><div class="parallax"></div>';
 
       sidenavMock = jest.fn().mockReturnValue({});
       parallaxMock = jest.fn().mockReturnValue({});
 
-      global.window.M = {
+      window.M = {
         Sidenav: { init: sidenavMock },
         Parallax: { init: parallaxMock },
       };
@@ -194,8 +186,9 @@ describe('init.js - Unit Tests', () => {
     });
 
     afterEach(() => {
-      dom.window.close();
-      delete global.window.M;
+      document.body.innerHTML = '';
+      delete window.M;
+      delete global.jQuery;
     });
 
     test('initializes sidenav and parallax via window.M when present', () => {
@@ -218,7 +211,7 @@ describe('init.js - Unit Tests', () => {
 
     test('uses M.AutoInit when available', () => {
       const autoInitMock = jest.fn();
-      global.window.M = {
+      window.M = {
         AutoInit: autoInitMock,
         Sidenav: { init: jest.fn() },
         Parallax: { init: jest.fn() },
@@ -233,7 +226,7 @@ describe('init.js - Unit Tests', () => {
     });
 
     test('falls back to jQuery when M is not present', () => {
-      delete global.window.M;
+      delete window.M;
 
       const sidenavMock = jest.fn();
       const parallaxMock = jest.fn();

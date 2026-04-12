@@ -19,8 +19,18 @@ afterAll(() => {
   console.error = originalError;
 });
 import { TextEncoder, TextDecoder } from 'util';
+import { ReadableStream, WritableStream, TransformStream } from 'stream/web';
+import { MessagePort, MessageChannel } from 'worker_threads';
 
-Object.assign(global, { TextDecoder, TextEncoder });
+Object.assign(global, {
+  TextDecoder,
+  TextEncoder,
+  ReadableStream,
+  WritableStream,
+  TransformStream,
+  MessagePort,
+  MessageChannel,
+});
 
 // Mock Vite environment variables for Jest tests
 global.__VITE_ENV__ = {
