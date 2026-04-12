@@ -86,10 +86,6 @@
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: xor;
   pointer-events: none;
   opacity: 0.6;
   transition: opacity 0.3s ease;
@@ -394,10 +390,6 @@
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: xor;
   pointer-events: none;
   opacity: 0.6;
   transition: opacity 0.3s ease;
