@@ -4,7 +4,7 @@ export const articles = [
     bannerIcon: 'login',
     bannerTitle: 'Cypress Global Hooks',
     bannerGradient: 'linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)',
-    title: 'How I stopped declaring login in each of my 5k tests',
+    title: 'How I stopped declaring login in each of my 5.000 tests',
     summary:
       'Leverage Cypress global hooks in e2e.ts to eliminate repetitive cy.login() calls across 5k+ tests — handling testIsolation, multiple credentials, and complex login strategies.',
     tags: [

@@ -90,7 +90,7 @@ describe('Articles Component', () => {
 
   test('Global Hooks article card should have correct tags', () => {
     const heading = screen.getByRole('heading', {
-      name: /How I stopped declaring login in each of my 5k tests/i,
+      name: /How I stopped declaring login in each of my 5.000 tests/i,
     });
     const card = heading.closest('.card');
     expect(card).toHaveTextContent('Cypress');
