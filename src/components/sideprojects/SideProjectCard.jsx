@@ -1,33 +1,41 @@
 const THEMES = {
-  playwright: {
-    accent: '#6a1b9a',
-    accentSoft: 'rgba(106, 27, 154, 0.08)',
-    accentLine: 'rgba(106, 27, 154, 0.2)',
-    accentShadow: 'rgba(106, 27, 154, 0.18)',
-    accentLight: '#9c4dcc',
-    icon: 'theaters',
+  'ai-testplan': {
+    accent: '#00897b',
+    accentSoft: 'rgba(0, 137, 123, 0.08)',
+    accentLine: 'rgba(0, 137, 123, 0.2)',
+    accentShadow: 'rgba(0, 137, 123, 0.18)',
+    accentLight: '#4db6ac',
+    icon: 'psychology',
   },
-  cypress: {
-    accent: '#2e7d32',
-    accentSoft: 'rgba(46, 125, 50, 0.08)',
-    accentLine: 'rgba(46, 125, 50, 0.2)',
-    accentShadow: 'rgba(46, 125, 50, 0.18)',
-    accentLight: '#60ad5e',
-    icon: 'eco',
-  },
-  selenium: {
+  'music-downloader': {
     accent: '#c62828',
     accentSoft: 'rgba(198, 40, 40, 0.08)',
     accentLine: 'rgba(198, 40, 40, 0.2)',
     accentShadow: 'rgba(198, 40, 40, 0.18)',
-    accentLight: '#ff5f52',
-    icon: 'science',
+    accentLight: '#ff5252',
+    icon: 'music_note',
+  },
+  'doom-game': {
+    accent: '#e65100',
+    accentSoft: 'rgba(230, 81, 0, 0.08)',
+    accentLine: 'rgba(230, 81, 0, 0.2)',
+    accentShadow: 'rgba(230, 81, 0, 0.18)',
+    accentLight: '#ff9100',
+    icon: 'sports_esports',
+  },
+  'chatbot-testing': {
+    accent: '#1565c0',
+    accentSoft: 'rgba(21, 101, 192, 0.08)',
+    accentLine: 'rgba(21, 101, 192, 0.2)',
+    accentShadow: 'rgba(21, 101, 192, 0.18)',
+    accentLight: '#42a5f5',
+    icon: 'chat',
   },
 };
 
-const FrameworkCard = ({ framework }) => {
-  const { id, cardTitle, cardSubtitle, stats, factoryPattern, cta } = framework;
-  const theme = THEMES[id] || THEMES.playwright;
+const SideProjectCard = ({ project }) => {
+  const { id, cardTitle, cardSubtitle, stats, factoryPattern, cta } = project;
+  const theme = THEMES[id] || THEMES['ai-testplan'];
 
   const vars = {
     '--fw-accent': theme.accent,
@@ -64,7 +72,7 @@ const FrameworkCard = ({ framework }) => {
           </div>
         </div>
 
-        {/* Highlights — visual tile: icon + title */}
+        {/* Highlights */}
         <div className="fw-card__highlights">
           {highlights.map((h, i) => (
             <div key={i} className="fw-card__highlight">
@@ -93,4 +101,4 @@ const FrameworkCard = ({ framework }) => {
   );
 };
 
-export default FrameworkCard;
+export default SideProjectCard;

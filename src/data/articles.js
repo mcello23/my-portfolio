@@ -1,40 +1,21 @@
 export const articles = [
   {
-    id: 1,
-    bannerIcon: 'code',
-    bannerTitle: 'GraphQL + Cypress',
-    bannerGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    title: 'How to integrate Hasura GraphQL hooks into your E2E tests',
+    id: 6,
+    bannerIcon: 'login',
+    bannerTitle: 'Cypress Global Hooks',
+    bannerGradient: 'linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)',
+    title: 'How I stopped declaring login in each of my 5k tests',
     summary:
-      'Use Hasura + custom Cypress commands to keep tests isolated and deterministic. Code examples + best practices.',
+      'Leverage Cypress global hooks in e2e.ts to eliminate repetitive cy.login() calls across 5k+ tests — handling testIsolation, multiple credentials, and complex login strategies.',
     tags: [
-      { name: 'GraphQL', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
-      { name: 'Hasura', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
-      { name: 'Cypress', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
+      { name: 'Cypress', color: 'linear-gradient(135deg, #2e7d32, #1b5e20)' },
+      { name: 'E2E Testing', color: 'linear-gradient(135deg, #2e7d32, #1b5e20)' },
+      { name: 'TypeScript', color: 'linear-gradient(135deg, #2e7d32, #1b5e20)' },
     ],
-    linkUrl:
-      'https://medium.com/@marcelocosta_72783/how-to-integrate-hasura-graphql-hooks-into-your-e2e-tests-with-cypress-284e5bfc6d81',
-    linkText: 'Read on Medium',
-    linkIcon: 'fab fa-medium',
-    linkStyle: { width: '100%', background: '#26a69a' },
-  },
-  {
-    id: 2,
-    bannerIcon: 'lock_open',
-    bannerTitle: 'Auth0 + Cypress',
-    bannerGradient: 'linear-gradient(135deg, #1e88e5 0%, #1565c0 100%)',
-    title: 'Speeding up Cypress tests with Auth0 login optimization',
-    summary: 'Token caching and session strategies to accelerate authenticated E2E tests.',
-    tags: [
-      { name: 'Auth0', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
-      { name: 'Cypress', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
-      { name: 'Performance', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
-    ],
-    linkUrl:
-      'https://www.linkedin.com/pulse/speeding-un-cypress-tests-auth0-login-across-specs-marcelo-costa-dg8ac/?trackingId=8vzDVXQnSX2gz8UWvjFgvg%3D%3D',
-    linkText: 'View on LinkedIn',
-    linkIcon: 'fab fa-linkedin',
-    linkStyle: { width: '100%', background: '#0077b5' },
+    linkUrl: 'https://dev.to/cypress/how-i-stopped-declaring-login-in-each-of-my-5k-tests-37km',
+    linkText: 'Read on Dev.to',
+    linkIcon: 'fab fa-dev',
+    linkStyle: { width: '100%', background: '#0a0a0a' },
   },
   {
     id: 3,
@@ -91,5 +72,42 @@ export const articles = [
     linkText: 'Read on Dev.to',
     linkIcon: 'fab fa-dev',
     linkStyle: { width: '100%', background: '#0a0a0a' },
+  },
+  {
+    id: 1,
+    bannerIcon: 'code',
+    bannerTitle: 'GraphQL + Cypress',
+    bannerGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    title: 'How to integrate Hasura GraphQL hooks into your E2E tests',
+    summary:
+      'Use Hasura + custom Cypress commands to keep tests isolated and deterministic. Code examples + best practices.',
+    tags: [
+      { name: 'GraphQL', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
+      { name: 'Hasura', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
+      { name: 'Cypress', color: 'linear-gradient(135deg, #43a047, #2e7d32)' },
+    ],
+    linkUrl:
+      'https://medium.com/@marcelocosta_72783/how-to-integrate-hasura-graphql-hooks-into-your-e2e-tests-with-cypress-284e5bfc6d81',
+    linkText: 'Read on Medium',
+    linkIcon: 'fab fa-medium',
+    linkStyle: { width: '100%', background: '#26a69a' },
+  },
+  {
+    id: 2,
+    bannerIcon: 'lock_open',
+    bannerTitle: 'Auth0 + Cypress',
+    bannerGradient: 'linear-gradient(135deg, #1e88e5 0%, #1565c0 100%)',
+    title: 'Speeding up Cypress tests with Auth0 login optimization',
+    summary: 'Token caching and session strategies to accelerate authenticated E2E tests.',
+    tags: [
+      { name: 'Auth0', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
+      { name: 'Cypress', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
+      { name: 'Performance', color: 'linear-gradient(135deg, #1e88e5, #1565c0)' },
+    ],
+    linkUrl:
+      'https://www.linkedin.com/pulse/speeding-un-cypress-tests-auth0-login-across-specs-marcelo-costa-dg8ac/?trackingId=8vzDVXQnSX2gz8UWvjFgvg%3D%3D',
+    linkText: 'View on LinkedIn',
+    linkIcon: 'fab fa-linkedin',
+    linkStyle: { width: '100%', background: '#0077b5' },
   },
 ];

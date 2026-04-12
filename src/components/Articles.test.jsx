@@ -76,4 +76,25 @@ describe('Articles Component', () => {
     const icon = card.querySelector('.material-icons');
     expect(icon).toHaveTextContent('psychology');
   });
+
+  test('Global Hooks login article link should be correct', () => {
+    const devtoLinks = screen.getAllByRole('link', { name: /Read on Dev.to/i });
+    const loginLink = devtoLinks.find((link) =>
+      link.getAttribute('href').includes('how-i-stopped-declaring-login-in-each-of-my-5k-tests')
+    );
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink).toHaveAttribute('href', expect.stringContaining('dev.to/cypress'));
+    expect(loginLink).toHaveAttribute('target', '_blank');
+    expect(loginLink).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  test('Global Hooks article card should have correct tags', () => {
+    const heading = screen.getByRole('heading', {
+      name: /How I stopped declaring login in each of my 5k tests/i,
+    });
+    const card = heading.closest('.card');
+    expect(card).toHaveTextContent('Cypress');
+    expect(card).toHaveTextContent('E2E Testing');
+    expect(card).toHaveTextContent('TypeScript');
+  });
 });

@@ -1,50 +1,50 @@
 import { useEffect } from 'react';
 import '../styles/frameworks.css';
 import AdvancedTesting from './frameworks/AdvancedTesting';
-import ComingSoonHero from './frameworks/ComingSoonHero';
 import FrameworkCard from './frameworks/FrameworkCard';
-import FrameworkHero from './frameworks/FrameworkHero';
 import { frameworksData } from './frameworks/Frameworks.data';
 
 const Frameworks = () => {
   useEffect(() => {
-    // Initialize Materialize components
     if (window.M) {
       window.M.AutoInit();
     }
   }, []);
 
   return (
-    <div>
-      <div style={{ marginTop: '80px' }}></div>
+    <div className="fw-page">
+      <div className="container">
+        <div className="fw-page-header">
+          <h3>Testing Frameworks & Open-Source Repos</h3>
+          <p>
+            E2E, API, and performance automation — each backed by CI/CD pipelines and live reports.
+          </p>
+        </div>
 
-      <div className="section" style={{ padding: '60px 0' }}>
-        <div className="container">
-          <div className="row center">
-            <h3 className="header col s12 dark" style={{ marginBottom: '40px' }}>
-              Testing Frameworks & Open-Source Examples
-            </h3>
-            <p className="flow-text grey-text text-darken-3">
-              Real-world automation repos covering E2E, API, and performance testing — each with
-              CI/CD pipelines and automated reporting
-            </p>
-          </div>
+        <div className="fw-api-endpoints fw-api-endpoints--centered">
+          <span className="fw-card__targets-label">Testing</span>
+          <a
+            href="https://www.saucedemo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fw-api-endpoints__badge"
+          >
+            <i className="material-icons">language</i>
+            saucedemo.com
+          </a>
+        </div>
+
+        <div className="fw-grid">
+          {frameworksData.map((framework, index) => (
+            <FrameworkCard key={`${framework.id}-${index}`} framework={framework} />
+          ))}
+        </div>
+
+        <div className="fw-section-divider">
+          <h4>⚡ API & Performance Testing</h4>
+          <p>k6 load testing, Supertest API validation, and Postman collections</p>
         </div>
       </div>
-
-      {frameworksData.map((framework) => (
-        <div key={framework.id}>
-          <FrameworkHero framework={framework} />
-          <div className="container" style={{ padding: '80px 0' }}>
-            <br />
-            <FrameworkCard framework={framework} />
-            <br />
-            <br />
-          </div>
-        </div>
-      ))}
-
-      <ComingSoonHero />
 
       <AdvancedTesting />
     </div>

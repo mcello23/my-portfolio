@@ -42,7 +42,7 @@ const Articles = () => {
           <h3 id="articles-heading" className="sr-only">
             Articles & Writing
           </h3>
-          <div className="row">
+          <div className="row" style={{ display: 'flex', flexWrap: 'wrap' }}>
             {articles &&
               articles.map((article) => <ArticleCard key={article.id} article={article} />)}
             <MoreArticlesCard />

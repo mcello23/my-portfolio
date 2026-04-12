@@ -1,0 +1,88 @@
+/* ============================================
+   SIDE PROJECTS PAGE — extends fw-card system
+   ============================================ */
+
+.sp-page {
+  margin-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* --- Page header --- */
+.sp-page-header {
+  text-align: center;
+  padding: 48px 0 36px;
+}
+
+.sp-page-header h3 {
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.sp-page-header p {
+  color: #546e7a;
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* --- Logo row inside cards --- */
+.sp-card__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+}
+
+.sp-card__logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 10%));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sp-card__logo-img:hover {
+    transform: scale(1.12) translateY(-3px);
+  }
+}
+
+/* --- Grid --- */
+.sp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ============================================
+   DESKTOP (>=993px)
+   ============================================ */
+@media (width >= 993px) {
+  .sp-card__logos {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .sp-card__logo-img {
+    height: 52px;
+  }
+}
+
+/* --- Mobile (<=600) --- */
+@media (width <= 600px) {
+  .sp-page-header {
+    padding: 32px 0 16px;
+  }
+
+  .sp-page-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .sp-card__logo-img {
+    height: 40px;
+  }
+}
