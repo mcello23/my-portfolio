@@ -264,8 +264,9 @@
 .fw-card__actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
+  margin-top: 8px;
 }
 
 .fw-card__cta {
@@ -525,6 +526,13 @@
 .fw-api-card__cta {
   align-self: center;
   margin-top: auto;
+}
+
+.fw-api-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 /* --- Shared Endpoints Card --- */

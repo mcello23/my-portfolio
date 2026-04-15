@@ -26,7 +26,7 @@ const THEMES = {
 };
 
 const FrameworkCard = ({ framework }) => {
-  const { id, cardTitle, cardSubtitle, stats, factoryPattern, cta } = framework;
+  const { id, cardTitle, cardSubtitle, stats, factoryPattern, cta, report } = framework;
   const theme = THEMES[id] || THEMES.playwright;
 
   const vars = {
@@ -87,6 +87,17 @@ const FrameworkCard = ({ framework }) => {
             <i className="material-icons">{cta.icon}</i>
             {cta.text}
           </a>
+          {report && (
+            <a
+              href={report.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fw-card__cta fw-card__cta--secondary"
+            >
+              <i className="material-icons">{report.icon}</i>
+              {report.text}
+            </a>
+          )}
         </div>
       </div>
     </article>

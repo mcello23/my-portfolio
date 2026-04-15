@@ -17,6 +17,7 @@ const apiRepos = [
       { icon: 'sync_alt', label: 'CI/CD' },
     ],
     repo: { href: 'https://github.com/mcello23/k6-example-repo' },
+    report: { href: 'https://mcello23.github.io/k6-example-repo/' },
   },
   {
     id: 'supertest',
@@ -36,6 +37,7 @@ const apiRepos = [
       { icon: 'verified', label: 'Contracts' },
     ],
     repo: { href: 'https://github.com/mcello23/supertest-example-repo' },
+    report: { href: 'https://mcello23.github.io/supertest-example-repo/' },
   },
   {
     id: 'postman',
@@ -55,6 +57,7 @@ const apiRepos = [
       { icon: 'settings', label: 'Env Overrides' },
     ],
     repo: { href: 'https://github.com/mcello23/postman-example-repo' },
+    report: { href: 'https://mcello23.github.io/postman-example-repo/' },
   },
 ];
 
@@ -128,15 +131,28 @@ const AdvancedTesting = () => {
                   ))}
                 </div>
 
-                <a
-                  href={repo.repo.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="fw-card__cta fw-card__cta--primary fw-api-card__cta"
-                >
-                  <i className="material-icons">code</i>
-                  View on GitHub
-                </a>
+                <div className="fw-api-card__actions">
+                  <a
+                    href={repo.repo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fw-card__cta fw-card__cta--primary fw-api-card__cta"
+                  >
+                    <i className="material-icons">code</i>
+                    View on GitHub
+                  </a>
+                  {repo.report && (
+                    <a
+                      href={repo.report.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="fw-card__cta fw-card__cta--secondary fw-api-card__cta"
+                    >
+                      <i className="material-icons">assessment</i>
+                      Live Report
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           );
