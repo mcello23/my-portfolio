@@ -3,8 +3,9 @@
 # Certificate Thumbnail Generator
 # Creates 300px wide thumbnails for certificate images
 
-IMAGES_DIR="/home/mcosta/webpage/images"
-THUMBS_DIR="/home/mcosta/webpage/thumbs"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+IMAGES_DIR="$SCRIPT_DIR/../../public/images"
+THUMBS_DIR="$SCRIPT_DIR/../../public/images/thumbs"
 
 echo "🖼️  Certificate Thumbnail Generator"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

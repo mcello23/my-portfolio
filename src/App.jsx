@@ -39,13 +39,6 @@ function App() {
     }
   }, [location]);
 
-  useEffect(() => {
-    // Initialize Materialize components if needed
-    if (window.M) {
-      window.M.AutoInit();
-    }
-  }, []);
-
   useLayoutEffect(() => {
     const prefersReducedMotion =
       typeof window !== 'undefined' &&

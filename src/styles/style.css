@@ -501,46 +501,6 @@ p#manual-tests {
 
 /* Small devices (landscape phones, 576px to 767px) */
 @media only screen and (width >= 576px) and (width <= 767px) {
-  /* Navigation - still needs mobile-friendly layout */
-  nav:not(.main-nav) .nav-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    padding: 10px !important;
-  }
-
-  nav:not(.main-nav) .brand-logo {
-    font-size: 1.1rem !important;
-    text-align: center !important;
-    position: static !important;
-    display: flex !important;
-    justify-content: center !important;
-    padding: 10px !important;
-  }
-
-  /* Show navigation on small screens */
-  nav:not(.main-nav) .hide-on-med-and-down {
-    display: flex !important;
-    flex-direction: column !important;
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
-    width: 100% !important;
-    gap: 8px !important;
-    margin: 10px 0 0 !important;
-  }
-
-  nav:not(.main-nav) .center-nav {
-    order: 1 !important;
-  }
-
-  nav:not(.main-nav) ul:last-child {
-    order: 2 !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    margin-top: 8px !important;
-  }
-
   .nav-btn {
     font-size: 0.85rem !important;
     padding: 12px 16px !important;
@@ -592,19 +552,6 @@ p#manual-tests {
 
 /* Medium devices (tablets, 768px to 991px) */
 @media only screen and (width >= 768px) and (width <= 991px) {
-  /* Navigation - show elements but in adjusted layout */
-  nav:not(.main-nav) .hide-on-med-and-down {
-    display: flex !important;
-  }
-
-  nav:not(.main-nav) .center-nav {
-    gap: 20px !important;
-  }
-
-  nav:not(.main-nav) .brand-logo {
-    font-size: 1.3rem !important;
-  }
-
   .nav-btn {
     font-size: 0.8rem !important;
     padding: 8px 14px !important;

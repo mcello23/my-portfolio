@@ -152,8 +152,8 @@ export default function () {
     assetLoadTime.add(cssRes.timings.duration, { type: 'css' });
 
     // Test JS loading
-    const jsRes = http.get(`${BASE_URL}/js/init.js`, {
-      tags: { type: 'js', asset: 'init' },
+    const jsRes = http.get(`${BASE_URL}/js/gtag-init.js`, {
+      tags: { type: 'js', asset: 'gtag-init' },
     });
     check(jsRes, {
       'JS loads successfully': (r) => r.status === 200,

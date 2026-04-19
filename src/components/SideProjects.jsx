@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
 import '../styles/frameworks.css';
 import '../styles/side-projects.css';
 import SideProjectCard from './sideprojects/SideProjectCard';
 import { sideProjectsData } from './sideprojects/SideProjects.data';
 
 const SideProjects = () => {
-  useEffect(() => {
-    if (window.M) {
-      window.M.AutoInit();
-    }
-  }, []);
-
   return (
     <div className="sp-page">
       <div className="container">

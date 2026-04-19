@@ -28,9 +28,9 @@ const certificates = [
   },
 ];
 
-// Directories (now in utils/certificates, so go up 2 levels)
-const IMAGES_DIR = path.join(__dirname, '..', '..', 'images');
-const THUMBS_DIR = path.join(__dirname, '..', '..', 'images/thumbs');
+// Directories in the current public asset tree
+const IMAGES_DIR = path.join(__dirname, '..', '..', 'public', 'images');
+const THUMBS_DIR = path.join(__dirname, '..', '..', 'public', 'images', 'thumbs');
 
 // Ensure directories exist
 if (!fs.existsSync(IMAGES_DIR)) {

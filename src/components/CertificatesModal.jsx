@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { certificates } from '../data/certificates';
-import '../styles/certificates.min.css';
+import '../styles/certificates.css';
 import useFocusTrap from './hooks/useFocusTrap';
 
 const CertificatesModal = ({ isOpen, onClose }) => {

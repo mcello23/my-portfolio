@@ -1,8 +1,8 @@
 /**
  * Navbar CSS Regression Test
  *
- * Guarantees that legacy responsive rules in `src/styles/style.min.css`
- * do NOT override the custom React navbar (`nav.main-nav`).
+ * Guarantees that legacy responsive navbar selectors stay out of the shared
+ * stylesheet and that the active tablet override uses explicit selectors.
  *
  * This protects against layout glitches when resizing desktop -> mobile.
  */
@@ -11,19 +11,22 @@ const fs = require('fs');
 const path = require('path');
 
 describe('Navbar responsive CSS scoping', () => {
-  test('style.min.css does not apply small-breakpoint nav rules to nav.main-nav', () => {
-    const cssPath = path.resolve(__dirname, '../../src/styles/style.min.css');
-    const css = fs.readFileSync(cssPath, 'utf8');
+  test('shared CSS no longer carries legacy responsive navbar selectors', () => {
+    const sharedCssPath = path.resolve(__dirname, '../../src/styles/style.css');
+    const sharedCss = fs.readFileSync(sharedCssPath, 'utf8');
 
-    // The problematic selectors were `nav .nav-wrapper` etc.
-    // They must be scoped to exclude the custom navbar.
-    expect(css).toContain('nav:not(.main-nav) .nav-wrapper');
-    expect(css).toContain('nav:not(.main-nav) .brand-logo');
-    expect(css).toContain('nav:not(.main-nav) .center-nav');
+    expect(sharedCss).not.toContain('nav:not(.main-nav) .nav-wrapper');
+    expect(sharedCss).not.toContain('nav:not(.main-nav) .brand-logo');
+    expect(sharedCss).not.toContain('nav:not(.main-nav) .hide-on-med-and-down');
+    expect(sharedCss).not.toContain('nav:not(.main-nav) .center-nav');
+    expect(sharedCss).not.toContain('nav:not(.main-nav) ul:last-child');
+  });
 
-    // Ensure we didn't regress back to the unscoped selectors inside responsive blocks.
-    // (Keeping this strict helps catch accidental re-minification or copy/paste regressions.)
-    expect(css).not.toMatch(/@media[^{}]*\{[^}]*\bnav\s+\.nav-wrapper\b/);
-    expect(css).not.toMatch(/@media[^{}]*\{[^}]*\bnav\s+\.brand-logo\b/);
+  test('tablet override uses explicit social-nav selector', () => {
+    const indexCssPath = path.resolve(__dirname, '../../src/index.css');
+    const indexCss = fs.readFileSync(indexCssPath, 'utf8');
+
+    expect(indexCss).toContain('nav.main-nav ul.social-nav');
+    expect(indexCss).not.toContain('nav.main-nav ul:last-child');
   });
 });

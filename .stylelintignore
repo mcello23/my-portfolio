@@ -15,7 +15,6 @@ tests/puppeteer/reports/
 public/css/
 src/styles/prism.css
 **/materialize.css
-**/materialize.min.css
 **/prism.css
 
 # All minified files

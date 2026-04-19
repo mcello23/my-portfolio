@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
 import '../styles/frameworks.css';
 import AdvancedTesting from './frameworks/AdvancedTesting';
 import FrameworkCard from './frameworks/FrameworkCard';
 import { frameworksData } from './frameworks/Frameworks.data';
 
 const Frameworks = () => {
-  useEffect(() => {
-    if (window.M) {
-      window.M.AutoInit();
-    }
-  }, []);
-
   return (
     <div className="fw-page">
       <div className="container">

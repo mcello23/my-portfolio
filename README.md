@@ -2,8 +2,8 @@
 
 [![CI Pipeline](https://github.com/mcello23/webpage/actions/workflows/ci.yml/badge.svg)](https://github.com/mcello23/webpage/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![React](https://img.shields.io/badge/react-v19.2.4-61dafb.svg)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/vite-v7.3.1-646cff.svg)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/react-v19.2.5-61dafb.svg)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/vite-v8.0.8-646cff.svg)](https://vitejs.dev/)
 
 A modern, performance-oriented, and accessibility-aware portfolio showcasing large-scale E2E automation, test architecture, and delivery impact.
 
@@ -82,10 +82,10 @@ One of the unique features of this portfolio is the **Live Test Dashboard** (acc
 
 ### Frontend Core
 
-- **React 19.2.4**: Component-based UI architecture with functional components and hooks.
-- **React Router DOM 7.13.0**: Client-side routing for the three-page application.
-- **Vite 7.3.1**: Build tool with CSS code splitting and manual chunk optimization.
-- **Materialize CSS**: Responsive grid and styling (legacy integration).
+- **React 19.2.5**: Component-based UI architecture with functional components and hooks.
+- **React Router DOM 7.14.0**: Client-side routing for the three-page application.
+- **Vite 8.0.8**: Build tool with CSS code splitting and manual chunk optimization.
+- **Materialize CSS**: Responsive grid and styling (CSS-only legacy integration).
 - **Font Awesome 5.15.1**: Iconography.
 - **Prism.js**: Code syntax highlighting used in the Frameworks page.
 
@@ -117,7 +117,7 @@ This project employs a **Testing Pyramid** approach:
 
 - **GitHub Actions**: Four-stage automated pipeline — Lint → Test → Deploy → Lighthouse.
 - **Cloudflare Pages**: High-performance edge hosting (project: `marcelocosta`).
-- **Wrangler 4.61.1**: CLI tool for Cloudflare Pages deployments.
+- **Wrangler 4.81.1**: CLI tool for Cloudflare Pages deployments.
 - **GitHub Gist**: Lightweight "database" for storing the latest test metrics.
 - **Dependabot**: Weekly automated dependency updates (max 5 open PRs).
 - **Calendly**: Integration for scheduling calls (Navbar and Footer).
@@ -165,7 +165,7 @@ Code quality is enforced *before* commits reach the repository using **Husky** g
 │   ├── workflows/ci.yml         # Four-stage CI/CD pipeline
 │   └── dependabot.yml           # Automated dependency updates
 ├── public/
-│   ├── js/                      # Legacy JavaScript (Materialize, Prism, gtag)
+│   ├── js/                      # Public JavaScript assets (certificates, analytics bootstrap, Prism vendor file)
 │   ├── images/                  # Static images and thumbnails
 │   ├── favicon/                 # Favicon assets
 │   ├── _headers                 # Cloudflare security & cache headers
@@ -175,7 +175,6 @@ Code quality is enforced *before* commits reach the repository using **Husky** g
 ├── scripts/
 │   ├── generate-csp-headers.js  # Generates CSP header hashes post-build
 │   ├── generate-test-data.js    # Parses Jest/k6 results into public/test-data.js
-│   ├── prepare-cloudflare-build.js
 │   └── test-csp-server.js       # Local CSP testing server
 ├── src/
 │   ├── App.jsx                  # Root component with React Router routes
@@ -241,7 +240,7 @@ Code quality is enforced *before* commits reach the repository using **Husky** g
 
 ### Prerequisites
 
-- Node.js >= 22.20.0
+- Node.js >= 24.14.1
 - Yarn >= 4.0.0
 
 ### Installation
@@ -302,7 +301,7 @@ yarn quality:fix
 ### Development
 
 - **Build**: `vite`, `@vitejs/plugin-react`
-- **Testing**: `jest`, `@testing-library/react`, `puppeteer`, `jsdom`, `@swc/jest`
+- **Testing**: `jest`, `jest-environment-jsdom`, `@testing-library/react`, `@testing-library/jest-dom`, `puppeteer`, `@swc/jest`
 - **Linting**: `eslint`, `prettier`, `stylelint`, `husky`, `lint-staged`
 - **Deployment**: `wrangler` (Cloudflare Pages CLI)
 

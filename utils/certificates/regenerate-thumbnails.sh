@@ -3,8 +3,9 @@
 # Script to regenerate all certificate thumbnails to consistent high quality
 # Generates 300px wide thumbnails from the full-size certificate images
 
-IMAGES_DIR="../../images"
-THUMBS_DIR="../../images/thumbs"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+IMAGES_DIR="$SCRIPT_DIR/../../public/images"
+THUMBS_DIR="$SCRIPT_DIR/../../public/images/thumbs"
 
 echo "🔧 Regenerating certificate thumbnails to consistent 300px width..."
 echo "=================================================="

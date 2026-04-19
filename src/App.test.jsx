@@ -64,13 +64,6 @@ jest.mock('./components/CookieConsent', () => () => (
 ));
 
 describe('App Component', () => {
-  beforeAll(() => {
-    // Mock window.M for Materialize
-    window.M = {
-      AutoInit: jest.fn(),
-    };
-  });
-
   beforeEach(() => {
     // Stable viewport defaults for viewport checks
     Object.defineProperty(window, 'innerHeight', { value: 800, writable: true });

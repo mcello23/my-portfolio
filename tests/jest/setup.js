@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom';
+import { ReadableStream, TransformStream, WritableStream } from 'stream/web';
+import { TextDecoder, TextEncoder } from 'util';
 
 // Suppress React 18 act() warnings from lazy-loaded routes
 // These are internal React Router async updates that don't affect test validity
@@ -18,19 +20,22 @@ beforeAll(() => {
 afterAll(() => {
   console.error = originalError;
 });
-import { TextEncoder, TextDecoder } from 'util';
-import { ReadableStream, WritableStream, TransformStream } from 'stream/web';
-import { MessagePort, MessageChannel } from 'worker_threads';
 
-Object.assign(global, {
+const testGlobals = {
   TextDecoder,
   TextEncoder,
   ReadableStream,
   WritableStream,
   TransformStream,
-  MessagePort,
-  MessageChannel,
-});
+  MessageChannel: undefined,
+  MessagePort: undefined,
+};
+
+// React's scheduler uses MessageChannel when available. In Jest/Node this can keep
+// the event loop alive and trigger the final "Jest did not exit" warning.
+// Force the timer fallback in tests.
+
+Object.assign(global, testGlobals);
 
 // Mock Vite environment variables for Jest tests
 global.__VITE_ENV__ = {

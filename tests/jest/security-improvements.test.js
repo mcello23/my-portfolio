@@ -114,45 +114,6 @@ describe('Code Documentation and Security Enhancements', () => {
     });
   });
 
-  describe('Materialize Initialization - JSDoc Documentation Quality', () => {
-    let initCode;
-
-    beforeAll(() => {
-      initCode = fs.readFileSync(path.join(__dirname, '../../public/js/init.js'), 'utf8');
-    });
-
-    test('has file-level JSDoc documentation', () => {
-      expect(initCode).toContain('@fileoverview');
-      expect(initCode).toContain('@author');
-      expect(initCode).toContain('@version');
-    });
-
-    test('documents dependencies (Materialize + optional jQuery fallback)', () => {
-      expect(initCode).toContain('@requires materialize-css');
-      expect(initCode).toContain('Optional dependency: jQuery');
-    });
-
-    test('IIFE has JSDoc', () => {
-      expect(initCode).toContain('IIFE');
-      expect(initCode).toContain('@param {Function|null} $');
-    });
-
-    test('document ready function has JSDoc', () => {
-      expect(initCode).toContain('@function');
-      expect(initCode).toContain('@name documentReady');
-    });
-
-    test('component initializations have comments', () => {
-      expect(initCode).toContain('Initialize Materialize sidenav');
-      expect(initCode).toContain('Initialize Materialize parallax');
-    });
-
-    test('includes links to Materialize documentation', () => {
-      expect(initCode).toContain('@see {@link https://materializecss.com/sidenav.html}');
-      expect(initCode).toContain('@see {@link https://materializecss.com/parallax.html}');
-    });
-  });
-
   describe('XSS Attack Prevention and Input Sanitization', () => {
     let certCode;
 
@@ -290,15 +251,13 @@ describe('Code Documentation and Security Enhancements', () => {
   });
 
   describe('Overall Documentation Coverage and Completeness', () => {
-    test('all JavaScript files have JSDoc', () => {
+    test('public certificate module keeps file-level JSDoc', () => {
       const certCode = fs.readFileSync(
         path.join(__dirname, '../../public/js/certificates.js'),
         'utf8'
       );
-      const initCode = fs.readFileSync(path.join(__dirname, '../../public/js/init.js'), 'utf8');
 
       expect(certCode).toContain('@fileoverview');
-      expect(initCode).toContain('@fileoverview');
     });
 
     test('documentation is comprehensive', () => {

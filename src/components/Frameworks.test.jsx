@@ -45,15 +45,7 @@ const renderComponent = () =>
 
 describe('Frameworks Component', () => {
   beforeEach(() => {
-    window.M = {
-      AutoInit: jest.fn(),
-    };
-
     renderComponent();
-  });
-
-  test('initializes Materialize on mount', () => {
-    expect(window.M.AutoInit).toHaveBeenCalledTimes(1);
   });
 
   test('renders the page header and saucedemo target badge', () => {

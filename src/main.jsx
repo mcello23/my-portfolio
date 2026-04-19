@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
-// Legacy CSS imports
-import './styles/certificates.min.css';
-import './styles/cookie-consent.min.css';
-import './styles/materialize.min.css';
-import './styles/navbar.min.css';
+// Shared legacy styles that remain part of the React app
+import './styles/cookie-consent.css';
+import './styles/materialize.css';
+import './styles/navbar.css';
 import './styles/prism.css';
-import './styles/style.min.css';
-import './styles/test-dashboard.min.css';
+import './styles/style.css';
 
 import './index.css';
 

@@ -593,9 +593,7 @@ body {
   }
 }
 
-/* Navbar: keep layout stable when resizing down to mobile/tablet.
-   There are legacy responsive rules in `style.min.css` that target `nav ul:last-child`
-   and can accidentally center/reorder our right-side social icons while resizing. */
+/* Navbar: keep the toggle and action group aligned through the tablet breakpoint. */
 @media screen and (width <= 991px) {
   nav.main-nav .mobile-menu-toggle {
     display: block;
@@ -612,12 +610,6 @@ body {
     order: 10 !important;
     justify-content: flex-end !important;
     margin-top: 0 !important;
-  }
-
-  /* Counteract legacy selector `nav ul:last-child` */
-  nav.main-nav ul:last-child {
-    order: 10 !important;
-    justify-content: flex-end !important;
   }
 }
 

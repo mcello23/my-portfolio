@@ -1,28 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
-
-// --- Mocks Setup ---
-
-// Mock Materialize (window.M)
-window.M = {
-  AutoInit: jest.fn(),
-  Modal: {
-    init: jest.fn(() => ({
-      open: jest.fn(),
-      close: jest.fn(),
-      destroy: jest.fn(),
-    })),
-    getInstance: jest.fn(() => ({
-      open: jest.fn(),
-      close: jest.fn(),
-      destroy: jest.fn(),
-    })),
-  },
-  Tooltip: {
-    init: jest.fn(),
-  },
-};
 
 // Mock IntersectionObserver
 window.IntersectionObserver = jest.fn().mockImplementation(() => ({
